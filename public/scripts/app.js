@@ -6,7 +6,7 @@
 
 $(document).ready(function() {
   // Test / driver code (temporary). Eventually will get this from the server.
-  const tweetData = data = [
+  const data = [
     {
       "user": {
           "name": "Pikachu",
@@ -89,17 +89,22 @@ $(document).ready(function() {
 
   function renderTweets(tweets) {
     for (i = 0; i < tweets.length; i++) {
-      $('#tweets-container').append(createTweetElement(tweets[i]));
+      $('#tweets-container').prepend(createTweetElement(tweets[i]));
     }
+  }
+
+  function loadTweets(data) {
+    $.get("/tweets", function(data) {
+      renderTweets(data);
+    });
   }
 
   $("#new-form").submit(function(event) {
     event.preventDefault();
     $.post("/tweets", $(this).serialize(), function() {
-      console.log("SUCCESSFUL!");
     });
   });
 
-  renderTweets(data);
+  loadTweets(data);
 
 });
