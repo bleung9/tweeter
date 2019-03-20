@@ -1,0 +1,101 @@
+.new-tweet {
+    border-radius: 10px;
+    background-color: lightblue;
+    padding: 0px 10px 10px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+#container h2 {
+  padding: 5px 0px 2px 0px;
+  border-bottom-color: blue;
+  border-bottom: solid;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: -10px;
+}
+
+input {
+  margin-top: 5px;
+}
+
+.counter {
+  float: right;
+  margin-top: 5px;
+  color: black;
+}
+
+.belowZero {
+  color: red;
+}
+
+article.tweet {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border: 1px solid green;
+  opacity: 0.4;
+}
+
+article.tweet:hover {
+  border: 1px solid red;
+  opacity: 0.8;
+}
+
+article.tweet header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: lightgray;
+  min-height: 70px;
+}
+
+/*#display article {
+  margin-top: 30px;
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 20px;
+  padding-left: 10px;
+}*/
+
+
+article.tweet header h2 {
+  float: left;
+  margin: 0px;
+  margin-left: 10px;
+  /*display: inline;*/
+  /*padding-right: 5px;*/
+}
+
+article.tweet header span.user-handle {
+  float: right;
+  padding-top: 8px;
+  padding-right: 8px;
+}
+
+/*#display footer {
+  padding-left: 10px;
+}*/
+
+article.tweet header img {
+  float: left;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  /*padding-top: 5px;*/
+  padding-left: 5px;
+}
+
+article.tweet .body {
+  padding: 30px;
+}
+
+article.tweet footer {
+  border-top: 1px solid lightgray;
+  padding: 10px;
+}
