@@ -92,5 +92,14 @@ $(document).ready(function() {
       $('#tweets-container').append(createTweetElement(tweets[i]));
     }
   }
+
+  $("#new-form").submit(function(event) {
+    event.preventDefault();
+    $.post("/tweets", $(this).serialize(), function() {
+      console.log("SUCCESSFUL!");
+    });
+  });
+
   renderTweets(data);
+
 });
