@@ -64,6 +64,11 @@ $(document).ready(function() {
     });
   });
 
+  $("#nav-bar button").click(function(event) {
+    $(".new-tweet").slideToggle(80);
+    $("textarea").focus();
+  });
+
   loadTweets();
 
 });

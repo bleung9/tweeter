@@ -6,6 +6,7 @@
   position: fixed;
   padding-right: 2em;
   padding-left: 2em;
+  z-index: 5;
 }
 
 #nav-bar .logo {
@@ -18,4 +19,13 @@
   margin-left: 10px;
   font-size: 200%;
   line-height: 80px;
+}
+
+#nav-bar button {
+  background-color: red;
+  font-size: 20px;
+  padding: 18px 18px;
+  border-radius: 15px;
+  float: right;
+  margin-top: 8px;
 }
