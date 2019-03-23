@@ -43,8 +43,8 @@ $(document).ready(function() {
     }
   }
 
-//load tweets upon a GET request to /tweets, calls renderTweets.  include a function to allow liking
-// of tweets
+//load tweets upon a GET request to /tweets, calls renderTweets.
+// include a function to allow liking of tweets and refresh like counter w/o refreshing the page
   function loadTweets() {
     return $.get("/tweets", function(data) {
       renderTweets(data);
