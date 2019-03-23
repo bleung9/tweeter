@@ -21,6 +21,7 @@ $(document).ready(function() {
     let time = new Date(Number(data.created_at));
     let name = data.user.name;
     let $new_tweet = $("<article>").addClass("tweet");
+    $new_tweet.data("tweet-id", data._id);
     let template = `
             <header>
               <img src="${escape(img)}" />
@@ -28,7 +29,7 @@ $(document).ready(function() {
               <span class="user-handle">${escape(handle)}</span>
             </header>
             <div class="body">${escape(tweet)}</div>
-            <footer>${escape(time)}</footer>`
+            <footer>${escape(time)} <i class="far fa-heart" id="like"></i> ${data.liked}</footer>`
     $($new_tweet).append(template);
     return $new_tweet;
   }
@@ -43,9 +44,10 @@ $(document).ready(function() {
   }
 
 //load tweets upon a GET request to /tweets, calls renderTweets
-  function loadTweets() {
+  function loadTweets(callback) {
     return $.get("/tweets", function(data) {
       renderTweets(data);
+      callback();
     });
   }
 
@@ -79,6 +81,20 @@ $(document).ready(function() {
     $("textarea").focus();
   });
 
-  loadTweets();
+  loadTweets(function() {
+    $(".far").click(function(event) {
+        let id = $(this).parent().parent().data("tweet-id");
+        $.post("/likes", { id: id }).then( loadTweets());
+
+
+
+        //   (counter) => {
+        //   let curHTML = $(this).parent().html().substring(0, 97);
+        //   $(this).parent().html(curHTML + String(counter));
+        // });
+
+     });
+    }
+  );
 
 });

@@ -12,6 +12,11 @@
     word-wrap: break-word;
 }
 
+.far .fa-heart {
+  float: right;
+  z-index = 6;
+}
+
 .container h2 {
   margin-top: 0px;
 }
