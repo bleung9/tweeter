@@ -7,16 +7,6 @@ const likesRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
 
-  // likesRoutes.get("/", function(req, res) {
-  //   DataHelpers.getTweets((err, tweets) => {
-  //     if (err) {
-  //       res.status(500).json({ error: err.message });
-  //     } else {
-  //       res.json(tweets);
-  //     }
-  //   });
-  // });
-
   likesRoutes.post("/", function(req, res) {
     console.log(req.body.id);
     if (!req.body.id) {
@@ -33,7 +23,6 @@ module.exports = function(DataHelpers) {
     //   created_at: Date.now(),
     //   liked: 0
     // };
-
 
     //ASK ABOUT HOW THESE CALLBACK ERROR FUNCTIONS WORK!!!!!!!!!!!!!!
     //WHY DOES THE ONE ABOVE HAVE A REQ AND RES, AND THIS ONE ONLY AN ERR
