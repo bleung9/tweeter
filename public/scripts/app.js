@@ -81,14 +81,19 @@ $(document).ready(function() {
     $("textarea").focus();
   });
 
+//note that I can only update one tweet on the entire page once, and I can't update a tweet
+//I post via the submit form unless I reload the page.  this is b/c of how I set up the
+//like tweets route.
+//I COULD ALSO SEND BACK THE NEW INCREMENTED COUNTER from likes.js at the line "res.status(201).send();" INSTEAD
+// OF RELOADING loadTweets() within the post route here, instead I'd do .then( (counter) => { //code here })
   loadTweets(function() {
     $(".far").click(function(event) {
         let id = $(this).parent().parent().data("tweet-id");
         $.post("/likes", { id: id }).then( loadTweets());
 
 
-
-        //   (counter) => {
+// What I have below is changing the existing the front-end HTML manually...which of course is a bad idea LOL
+        //   .then ( () => {
         //   let curHTML = $(this).parent().html().substring(0, 97);
         //   $(this).parent().html(curHTML + String(counter));
         // });
