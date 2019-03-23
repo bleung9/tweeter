@@ -28,9 +28,7 @@ module.exports = function makeDataHelpers(db) {
     // like a tweet in mongodb
     likeTweet: function(id, callback) {
       db.collection("tweets").updateOne({ _id: new ObjectID(id) }, { $inc: { liked: 1 } }, (err, res) => {
-        console.log('res: ', res);
         db.collection("tweets").findOne({_id: new ObjectID(id)}, (err, res) => {
-          console.log("res: ", res.liked);
           callback(err, res.liked);
         })
       });

@@ -26,7 +26,6 @@ module.exports = function(DataHelpers) {
     //ASK ABOUT HOW THESE CALLBACK ERROR FUNCTIONS WORK!!!!!!!!!!!!!!
     //WHY DOES THE ONE ABOVE HAVE A REQ AND RES, AND THIS ONE ONLY AN ERR
     DataHelpers.likeTweet(req.body.id, (err, counter) => {
-      console.log("counter:", counter);
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
