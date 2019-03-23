@@ -29,12 +29,11 @@ module.exports = function makeDataHelpers(db) {
     likeTweet: function(id, callback) {
       db.collection("tweets").updateOne({ _id: new ObjectID(id) }, { $inc: { liked: 1 } }, (err, res) => {
         console.log('res: ', res);
-        callback(err);
+        db.collection("tweets").findOne({_id: new ObjectID(id)}, (err, res) => {
+          console.log("res: ", res.liked);
+          callback(err, res.liked);
+        })
       });
-      db.collection("tweets").findOne({_id: new ObjectID(id)}, (err, res) => {
-        console.log("res: ", res.liked);
-        callback(err);
-      })
     }
   };
 }

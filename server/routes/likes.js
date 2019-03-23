@@ -8,7 +8,6 @@ const likesRoutes  = express.Router();
 module.exports = function(DataHelpers) {
 
   likesRoutes.post("/", function(req, res) {
-    console.log(req.body.id);
     if (!req.body.id) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
@@ -26,11 +25,12 @@ module.exports = function(DataHelpers) {
 
     //ASK ABOUT HOW THESE CALLBACK ERROR FUNCTIONS WORK!!!!!!!!!!!!!!
     //WHY DOES THE ONE ABOVE HAVE A REQ AND RES, AND THIS ONE ONLY AN ERR
-    DataHelpers.likeTweet(req.body.id, (err) => {
+    DataHelpers.likeTweet(req.body.id, (err, counter) => {
+      console.log("counter:", counter);
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.status(201).send();
+        res.status(201).send({likes: counter});
       }
     });
   });
