@@ -14,6 +14,7 @@ $(document).ready(function() {
   }
 
 //create a tweet in HTML format by auto-generating an avatar (img), handle, name for an entered tweet
+//apply escape function to prevent XSS
   function createTweetElement(data) {
     let tweet = data.content.text;
     let img = data.user.avatars.small;
@@ -68,18 +69,20 @@ $(document).ready(function() {
     let tweet = $(this).serialize();
     let tweet_length = $(this).find("textarea").val().length;
     if (tweet_length === 0) {
-      $(".new-tweet .error-msg").text("YOU DIDN'T ENTER ANYTHING, ARE YOU BLIND?!!");
+      $(".new-tweet .error-msg").text("Please enter a tweet :( Don't leave me empty!");
       return;
     }
     else if (tweet_length > 140) {
-      $(".new-tweet .error-msg").text("THE COUNTER IS THERE, ARE YOU BLIND?!!!");
+      $(".new-tweet .error-msg").text("You are over the character limit :( ");
       return;
     }
-    $(".new-tweet .error-msg").text("");
-    $.post("/tweets", tweet).then(() => {
-      loadTweets();
-      $(this).find("textarea").val("");
-    });
+    else {
+      $(".new-tweet .error-msg").text("");
+      $.post("/tweets", tweet).then(() => {
+        loadTweets();
+        $(this).find("textarea").val("");
+      });
+    }
   });
 
 //toggle the compose tweet button.  default => invisible
